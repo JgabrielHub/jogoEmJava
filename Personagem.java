@@ -2,22 +2,24 @@ public class Personagem {
  
     //atributos ou propriedades
     private String nome;
-    private int energia = 10;
-    private int fome = 10;
-    private int sono = 1;
+    private int energia = 3;
+    private int fome = 0;
+    private int sono = 0;
     private int item = 0;
-  
+    private boolean vivo = true;
     //construtor: lista de parâmetros vazia
     // Personagem(){
   
     // }
   
-    Personagem(String nome){
+    Personagem(String nome,boolean vivo){
       this.nome = nome;
+      this.vivo = vivo;
     }
   
-    Personagem(String nome, int energia, int fome, int sono, int item){
+    Personagem(String nome, int energia, int fome, int sono, int item, boolean vivo){
       this.nome = nome;
+      this.vivo = vivo;
       if (energia >= 0 && energia <= 10)
         this.energia = energia;
       if (fome >= 0 && fome <= 10)
@@ -26,8 +28,9 @@ public class Personagem {
         this.sono = sono;  
       if(item >= 0 && item <= 10 )
         this.item = item;
+
     }
-  
+
     //comportamentos (métodos)
     void cacar(){
       if(energia >= 2){
@@ -82,8 +85,12 @@ public class Personagem {
 
     void morrer(){
       if (energia <= 0){
+        vivo = false;
         System.out.println(nome + " morreu");
-        System.exit(0);
       }
     }
+    public boolean vive(){
+      return vivo;
+    }
   }
+     
